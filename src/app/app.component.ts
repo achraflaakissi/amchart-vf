@@ -3,7 +3,6 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import {environment} from '../environments/environment';
 import { AmchartsService } from './amcharts.service';
 import { element } from 'protractor';
 
@@ -84,7 +83,6 @@ export class AppComponent implements AfterViewInit {
       polygonTemplate.tooltipText = "{name}";
       polygonTemplate.fill = this.chart.colors.getIndex(0);
 
-      if (!environment.production) console.log('Map chart initiated');
       const that = this;
       this.chart.events.on("ready", that.loadStores());
       
@@ -98,7 +96,6 @@ export class AppComponent implements AfterViewInit {
       const position = i;
       this.configArrayNames.count = this.nameOfColumnUsed;
       this.am4coreOperations();
-      if (!environment.production) console.log('Map chart changed to ' + type);
   }
 
   // Creates a series
@@ -183,8 +180,6 @@ export class AppComponent implements AfterViewInit {
           this.currentSeries = this.regionalSeries[data.target].series;
           this.currentSeries.show();
       });
-
-      if (!environment.production) console.log('Series created:', series);
       return series;
   }
  // Loads store data from array
